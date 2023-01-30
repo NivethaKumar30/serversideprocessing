@@ -39,7 +39,7 @@ Area.html:
     <script src='main.js'></script>
     
 </head>
-    
+ ```   
 <style>
     
     *{
@@ -127,7 +127,7 @@ Area.html:
 }
     
 </style>
-    
+ ```   
 <body>
     
     <div class="container">
