@@ -93,7 +93,7 @@ area=<input type="text" name="area" value="{{area}}"></input></br>
     </div>
     <br>
     <div class="footer">
-        Developed by Aakash S
+        Developed by Nivetha k
     </div>
 </form>
 </body>
