@@ -27,6 +27,8 @@ Add mathapp to installed apps in setting.py and add necessary changes
 
 ## PROGRAM :
 
+AREA.HTML
+
 <!DOCTYPE html>
 
 <html>
@@ -37,102 +39,205 @@ Add mathapp to installed apps in setting.py and add necessary changes
     
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     
-    <title>Area</title>
+    <title>Area of Rectangle</title>
     
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     
-    <style>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     
-        body{
-        
-            text-align: center;
-            
-            background-color: #ade8f4;
-            
-            color: #081c15;
-            
-        }
-        
-        div{
-        
-            display: block;
-            
-            background-color: #48cae4;
-            
-            text-align: center;
-            
-            border-radius: 20px;
-            
-            width: 500px;
-            
-            height: 200px;
-            
-            margin-left: auto;
-            
-            margin-right: auto;
-            
-        }
-        
-        form{
-        
-            padding-top: 25px;
-            
-        }
-        
-        input{
-        
-            text-align: center;
-            
-            border-radius: 20px;
-            
-            text-align: center;
-            
-            box-shadow: 1.5px 7px #00b4d8;
-            
-            background-color: #caf0f8;
-            
-        }
-        
-    </style>
+    <script src='main.js'></script>
     
 </head>
 
+<style>
+
+    *{
+    
+        box-sizing: border-box;
+        
+        font-family:Arial, Helvetica, sans-serif ;
+        
+    }
+    
+    body{
+    
+        background-color:rebeccapurple;
+        
+    }
+    
+    .container{
+    
+    width: 1080px;
+    
+    height: 500px;
+    
+    margin-top: 100px;
+    
+    margin-left: auto;
+    
+    margin-right: auto;
+    
+    border-radius: 10px;
+    
+    border: 10px solid rgb(72, 0, 87);
+    
+    background-color:rgb(175, 93, 223);
+    
+    }
+    
+    h1{
+    
+        text-align: center;
+        
+        padding-top: 20px;
+        
+    }
+    
+    .calculate{
+    
+        padding-top: 10px;
+        
+        padding-bottom: 10px;
+        
+        padding-left: 10px;
+        
+        padding-right:10px;
+        
+        text-align: center;
+        
+        font-size: 20px;
+        
+    }
+    
+    .footer {
+    
+  display: block;
+  
+  width: 100%;
+  
+  height: 40px;
+  
+  background-color: rgb(72,0,87);
+  
+  text-align: center;
+  
+  padding-top: 10px;
+  
+  padding-right: 5px;
+  
+  margin-right: 15px;
+  
+  margin-bottom: 20px;
+  
+  color: white;
+  
+  margin-top: 150px;
+  
+}
+
+</style>
+
 <body>
 
-    <h1>Area of Triangle</h1>
+    <div class="container">
     
-    <div>
+<h1>Area Of Rectangle</h1>  
+
+<form method ="POST">
+
+    {% csrf_token %}
     
-        <form method="POST">
-        
-            {% csrf_token %}
-            
-            Base = <input type="text" name="base" value="{{b}}"> m <br/>
-            
-            <br/>
-            
-            Height = <input type="text" name="height" value="{{h}}"> m <br/>
-            
-            <br/>
-            
-            <input type="submit" value="Calculate"><br/>
-            
-            <br/>
-            
-            Area = <input type="text" name="area" value="{{area}}"> m<sup>2 </sup><br/>
-            
-        </form>
+    <div class="calculate"> 
+    
+Length=<input type="text" name="length" value="{{l}}"></input></br>
+
+    </div>
+    
+    <div class="calculate"> 
+    
+Breadth=<input type="text" name="breadth" value="{{b}}"></input></br>
+
+    </div>
+    
+    <div class="calculate"> 
+    
+<input type="submit" value="calculationarea"></input></br>
+
+    </div>
+    
+    <div class="calculate"> 
+    
+area=<input type="text" name="area" value="{{area}}"></input></br>
+
+    </div>
+    
+    <br>
+    
+    <div class="footer">
+    
+        Developed by Nivetha k
         
     </div>
     
+</form>
+
 </body>
 
 </html>
 
+views.py:
+
+from django.shortcuts import render
+
+# Create your views here.
+
+def areacalculation(request):
+
+    context = {}
+    
+    context["area"] = "0"
+    
+    context["l"] = "0"
+    
+    context["b"] = "0"
+    
+    if request.method == 'POST':
+    
+        l= request.POST.get('length','0')
+        
+        b= request.POST.get('breadth','0')
+        
+        area = int(l) * int(b)
+        
+        context["area"] = area
+        
+        context["l"] = l
+        
+        context["b"] = b
+
+    return render(request,'mathapp/area.html',context)
+
+urls.py:
+
+from django.contrib import admin
+
+from django.urls import path
+
+from mathapp import views
+
+urlpatterns = [
+
+    path('admin/', admin.site.urls),
+    
+    path('areaoftriangle/',views.areacalculation,name="areaoftriangle"),
+    
+    path('',views.areacalculation,name="areaoftriangleroot")
+    
+]
+
 ## OUTPUT:
 
 ### Home Page:
-
 
 ## Result:
 
