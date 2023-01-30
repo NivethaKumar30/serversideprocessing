@@ -134,6 +134,12 @@ urlpatterns = [
 ```
 ## OUTPUT:
 
+![EX 5 WEB 2](https://user-images.githubusercontent.com/119559844/215579838-030c8a7d-4036-457a-b599-afc3c49cc7f0.png)
+
+
+![EX 5V WEB 1](https://user-images.githubusercontent.com/119559844/215579685-469963f3-c51c-4fea-a885-6a706905ae67.png)
+
+
 ### Home Page:
 
 ## Result:
