@@ -133,7 +133,7 @@ Area.html:
     
     <div class="container">
         
-<h1>Area Of Rectangle</h1>  
+<h1>Area Of Rectangle</h1> 
         
 <form method ="POST">
     
@@ -167,7 +167,7 @@ area=<input type="text" name="area" value="{{area}}"></input></br>
     
     <div class="footer">
     
-        Developed by Nivetha k
+        Developed by Nivetha.k
         
     </div>
     
